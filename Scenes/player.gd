@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var speed := 500;
+@export var speed := 500 # default speed of player set to 500 as per testing on local machine
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -9,10 +9,15 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	# position = Vector2(10,10)
-	# print(Input.is_action_pressed("ui_down"))
-	# print(Input.is_action_pressed("ui_down"))
+	# Player Movement and Animation
+	var animation = $CharacterBody2D/AnimationPlayer
+	var sprite = $CharacterBody2D/PlayerImage
 	var direction = Input.get_vector("Left", "Right", "Up" , "Down")
-	print(direction);
+	if direction != Vector2.ZERO: # true if player is moving
+		animation.play("Run")
+		sprite.flip_h = false
+		if direction.x < 0: # true for player moving to the left
+			sprite.flip_h = true
+	else: # false if the player is not moving at all
+		animation.play("idle")
 	position += direction * delta * speed
-	pass
