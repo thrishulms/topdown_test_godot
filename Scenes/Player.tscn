@@ -7,23 +7,6 @@
 radius = 48.0
 height = 128.0
 
-[sub_resource type="Animation" id="Animation_0r4sv"]
-resource_name = "idle"
-length = 0.5
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerImage:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.233333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [0, 1]
-}
-
 [sub_resource type="Animation" id="Animation_ce70y"]
 length = 0.001
 tracks/0/type = "value"
@@ -56,6 +39,23 @@ tracks/0/keys = {
 "values": [2, 3, 4, 5, 6]
 }
 
+[sub_resource type="Animation" id="Animation_0r4sv"]
+resource_name = "idle"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerImage:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.233333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gf4nj"]
 _data = {
 "RESET": SubResource("Animation_ce70y"),
@@ -70,7 +70,6 @@ script = ExtResource("1_o6015")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 position = Vector2(-4, 15)
-scale = Vector2(1, 1)
 shape = SubResource("CapsuleShape2D_s1jim")
 
 [node name="PlayerImage" type="Sprite2D" parent="CharacterBody2D"]
