@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://hktns7lq3eb2"]
+
+[ext_resource type="Texture2D" uid="uid://bkivm8ypkwset" path="res://Assets/Enemy/Enemy_Meele_1.png" id="1_ijhrt"]
+
+[node name="Enemy" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = ExtResource("1_ijhrt")
+hframes = 12

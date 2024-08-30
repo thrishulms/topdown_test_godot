@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://6ri428xr7hg5"]
+[gd_scene load_steps=4 format=3 uid="uid://6ri428xr7hg5"]
 
 [ext_resource type="PackedScene" uid="uid://cri2lc7ogxnjd" path="res://Scenes/Player.tscn" id="1_63muq"]
 [ext_resource type="PackedScene" uid="uid://brjjq5rlpmp70" path="res://Scenes/Gun.tscn" id="2_1bvb1"]
+[ext_resource type="PackedScene" uid="uid://hktns7lq3eb2" path="res://Scenes/Enemy.tscn" id="3_6ao0d"]
 
 [node name="Level" type="Node2D"]
 
@@ -9,4 +10,7 @@
 position = Vector2(372, 294)
 
 [node name="Gun" parent="Player" instance=ExtResource("2_1bvb1")]
-position = Vector2(29, 41)
+position = Vector2(15, 24)
+
+[node name="Enemy" parent="." instance=ExtResource("3_6ao0d")]
+position = Vector2(803, 402)

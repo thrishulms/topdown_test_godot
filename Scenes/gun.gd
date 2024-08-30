@@ -1,10 +1,13 @@
 extends Node2D
 
 var projectile_scene = preload("res://Scenes/Projectile.tscn")
+var can_shoot = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	var fire_rate_timer = $Sprite2D/FireRateTimer
+	fire_rate_timer.timeout.connect(_on_FireRateTimer_timeout)
+	fire_rate_timer.start()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -19,11 +22,17 @@ func _process(_delta: float) -> void:
 	rotation = direction.angle()
 	
 	# shoot logic
-	if Input.is_action_just_pressed("ShootTrigger"):  # 'ui_select' is the default action for left mouse click
+	if Input.is_action_pressed("ShootTrigger") and can_shoot:  # 'ui_select' is the default action for left mouse click
 		shoot(direction)
 
+func _on_FireRateTimer_timeout():
+	can_shoot = true  # Allow shooting again when the timer times out
+
 func shoot(direction):
+	can_shoot = false  # Prevent shooting until the timer resets
+	$Sprite2D/FireRateTimer.start()  # Reset the timer
 	var projectile = projectile_scene.instantiate()
-	get_parent().add_child(projectile)
-	projectile.global_position = global_position  # Start the projectile at the weapon's position
+	get_tree().root.add_child(projectile)
+	projectile.global_position = $Sprite2D/Marker2D.global_position  # Start the projectile at the weapon's position
 	projectile.direction = direction
+	projectile.rotation = rotation

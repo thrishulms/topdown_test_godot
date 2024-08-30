@@ -73,7 +73,7 @@ position = Vector2(-4, 15)
 shape = SubResource("CapsuleShape2D_s1jim")
 
 [node name="PlayerImage" type="Sprite2D" parent="CharacterBody2D"]
-scale = Vector2(5, 5)
+scale = Vector2(3, 3)
 texture = ExtResource("1_eatt1")
 hframes = 7
 frame = 1
