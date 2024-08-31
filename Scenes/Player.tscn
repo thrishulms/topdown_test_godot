@@ -4,8 +4,8 @@
 [ext_resource type="Script" path="res://Scenes/player.gd" id="1_o6015"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s1jim"]
-radius = 48.0
-height = 128.0
+radius = 28.0
+height = 74.0
 
 [sub_resource type="Animation" id="Animation_ce70y"]
 length = 0.001

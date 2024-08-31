@@ -8,14 +8,11 @@ func _ready() -> void:
 	player = get_tree().root.get_node("Level/Player")  # Adjust the path to match your scene structure
 
 func _process(delta: float) -> void:
-	var animationPlayer = $RigidBody2D/AnimationPlayer
+	var animationSprite = $CharacterBody2D/AnimatedSprite2D
 	if player:
 		var direction = (player.global_position - global_position).normalized()
-		var oldPosition = position;
 		position += direction * speed * delta
-		if oldPosition == position:
-			animationPlayer.play("Run")
-		else:
-			animationPlayer.play("Idle")
+		animationSprite.play("Run")
 	else:
-		animationPlayer.play("Idle")
+		animationSprite.play("Idle")
+		
