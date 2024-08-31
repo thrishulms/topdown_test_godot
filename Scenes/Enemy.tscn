@@ -120,17 +120,16 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_etybo"]
 size = Vector2(21.3333, 25)
 
-[node name="Enemy" type="Node2D"]
+[node name="Enemy" type="CharacterBody2D"]
 script = ExtResource("1_y4t8i")
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(3, 3)
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
 sprite_frames = SubResource("SpriteFrames_qmdfq")
 animation = &"Idle"
-frame_progress = 0.35714
+frame_progress = 0.206819
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-position = Vector2(0.666667, -1.83333)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, -5.5)
+scale = Vector2(3, 3)
 shape = SubResource("RectangleShape2D_etybo")

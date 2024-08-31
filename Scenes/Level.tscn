@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://Scenes/enemy_spawner.gd" id="4_wvbfn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_11sld"]
-size = Vector2(67, 654)
+size = Vector2(67, 717)
 
 [node name="Level" type="Node2D"]
 
@@ -14,7 +14,7 @@ size = Vector2(67, 654)
 position = Vector2(372, 294)
 
 [node name="Gun" parent="Player" instance=ExtResource("2_1bvb1")]
-position = Vector2(15, 24)
+position = Vector2(2.66667, 8.66667)
 
 [node name="Enemy" parent="." instance=ExtResource("3_6ao0d")]
 position = Vector2(803, 402)
@@ -27,5 +27,5 @@ collision_layer = 3
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(278, 359)
+position = Vector2(2, 311)
 shape = SubResource("RectangleShape2D_11sld")

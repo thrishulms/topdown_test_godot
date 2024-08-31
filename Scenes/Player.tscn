@@ -1,84 +1,82 @@
-[gd_scene load_steps=8 format=3 uid="uid://cri2lc7ogxnjd"]
+[gd_scene load_steps=12 format=3 uid="uid://cri2lc7ogxnjd"]
 
 [ext_resource type="Texture2D" uid="uid://s02mn4ihdixd" path="res://Assets/Player/Player.png" id="1_eatt1"]
 [ext_resource type="Script" path="res://Scenes/player.gd" id="1_o6015"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s1jim"]
-radius = 28.0
-height = 74.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lrmda"]
+size = Vector2(19, 25)
 
-[sub_resource type="Animation" id="Animation_ce70y"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerImage:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
+[sub_resource type="AtlasTexture" id="AtlasTexture_lhosu"]
+atlas = ExtResource("1_eatt1")
+region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="Animation" id="Animation_ck8xw"]
-resource_name = "Run"
-length = 0.7
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerImage:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.133333, 0.266667, 0.366667, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 1,
-"values": [2, 3, 4, 5, 6]
-}
+[sub_resource type="AtlasTexture" id="AtlasTexture_ms7tb"]
+atlas = ExtResource("1_eatt1")
+region = Rect2(32, 0, 32, 32)
 
-[sub_resource type="Animation" id="Animation_0r4sv"]
-resource_name = "idle"
-length = 0.5
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerImage:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.233333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [0, 1]
-}
+[sub_resource type="AtlasTexture" id="AtlasTexture_t1svm"]
+atlas = ExtResource("1_eatt1")
+region = Rect2(64, 0, 32, 32)
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_gf4nj"]
-_data = {
-"RESET": SubResource("Animation_ce70y"),
-"Run": SubResource("Animation_ck8xw"),
-"idle": SubResource("Animation_0r4sv")
-}
+[sub_resource type="AtlasTexture" id="AtlasTexture_x0kss"]
+atlas = ExtResource("1_eatt1")
+region = Rect2(96, 0, 32, 32)
 
-[node name="Player" type="Node2D"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_a8144"]
+atlas = ExtResource("1_eatt1")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_no87v"]
+atlas = ExtResource("1_eatt1")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n4xej"]
+atlas = ExtResource("1_eatt1")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5vrkc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lhosu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ms7tb")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t1svm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x0kss")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a8144")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_no87v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n4xej")
+}],
+"loop": true,
+"name": &"Run",
+"speed": 7.0
+}]
+
+[node name="Player" type="CharacterBody2D"]
+scale = Vector2(3, 3)
 script = ExtResource("1_o6015")
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 2.5)
+shape = SubResource("RectangleShape2D_lrmda")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-position = Vector2(-4, 15)
-shape = SubResource("CapsuleShape2D_s1jim")
-
-[node name="PlayerImage" type="Sprite2D" parent="CharacterBody2D"]
-scale = Vector2(3, 3)
-texture = ExtResource("1_eatt1")
-hframes = 7
-frame = 1
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterBody2D"]
-libraries = {
-"": SubResource("AnimationLibrary_gf4nj")
-}
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_5vrkc")
+animation = &"Run"
+frame_progress = 0.275178

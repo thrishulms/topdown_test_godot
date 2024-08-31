@@ -1,4 +1,4 @@
-extends Node2D
+extends CharacterBody2D
 
 @export var speed := 500 # default speed of player set to 500 as per testing on local machine
 
@@ -10,14 +10,17 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	# Player Movement and Animation
-	var animation = $CharacterBody2D/AnimationPlayer
-	var sprite = $CharacterBody2D/PlayerImage
+	var animatedSprite2D = $AnimatedSprite2D
 	var direction = Input.get_vector("Left", "Right", "Up" , "Down")
 	if direction != Vector2.ZERO: # true if player is moving
-		animation.play("Run")
-		sprite.flip_h = false
+		animatedSprite2D.play("Run")
+		animatedSprite2D.flip_h = false
 		if direction.x < 0: # true for player moving to the left
-			sprite.flip_h = true
+			animatedSprite2D.flip_h = true
+		velocity = direction * speed 
+		move_and_collide(velocity * delta)
+		position += direction * delta * speed
 	else: # false if the player is not moving at all
-		animation.play("idle")
-	position += direction * delta * speed
+		animatedSprite2D.play("idle")
+		
+	
