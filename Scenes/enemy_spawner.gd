@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var enemy_scene = preload("res://Scenes/Enemy.tscn")
-@export var spawn_delay: float = 2.0
+@export var spawn_delay: float = 1.0
 
 func _ready() -> void:
 	# Start a repeating timer to spawn enemies

@@ -70,7 +70,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_y61h6")
 }],
-"loop": true,
+"loop": false,
 "name": &"Attack",
 "speed": 7.0
 }, {
@@ -81,7 +81,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_bmkqd")
 }],
-"loop": true,
+"loop": false,
 "name": &"Idle",
 "speed": 3.0
 }, {
@@ -101,7 +101,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_xr1x3")
 }],
-"loop": true,
+"loop": false,
 "name": &"Run",
 "speed": 7.0
 }, {
@@ -112,9 +112,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_g2r2n")
 }],
-"loop": true,
+"loop": false,
 "name": &"TakeDamage",
-"speed": 3.0
+"speed": 8.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_etybo"]
@@ -126,10 +126,11 @@ script = ExtResource("1_y4t8i")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_qmdfq")
-animation = &"Idle"
-frame_progress = 0.206819
+animation = &"TakeDamage"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2, -5.5)
 scale = Vector2(3, 3)
 shape = SubResource("RectangleShape2D_etybo")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_animation_finished"]
