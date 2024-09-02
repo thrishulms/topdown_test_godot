@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var speed := 500 # default speed of player set to 500 as per testing on local machine
+@export var speed := 250 # default speed of player set to 500 as per testing on local machine
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

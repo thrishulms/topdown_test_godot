@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://6ri428xr7hg5"]
+[gd_scene load_steps=7 format=3 uid="uid://6ri428xr7hg5"]
 
 [ext_resource type="PackedScene" uid="uid://cri2lc7ogxnjd" path="res://Scenes/Player.tscn" id="1_63muq"]
 [ext_resource type="PackedScene" uid="uid://brjjq5rlpmp70" path="res://Scenes/Gun.tscn" id="2_1bvb1"]
@@ -7,6 +7,8 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_11sld"]
 size = Vector2(67, 717)
+
+[sub_resource type="TileSet" id="TileSet_xd0s6"]
 
 [node name="Level" type="Node2D"]
 
@@ -27,5 +29,12 @@ collision_layer = 3
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(2, 311)
+position = Vector2(-49, 365)
 shape = SubResource("RectangleShape2D_11sld")
+
+[node name="Node" type="Node" parent="."]
+
+[node name="TileMap" type="TileMap" parent="Node"]
+tile_set = SubResource("TileSet_xd0s6")
+rendering_quadrant_size = 96
+format = 2
