@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @export var speed := 250 # default speed of player set to 500 as per testing on local machine
+@export var health := 100
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -21,6 +22,8 @@ func _process(delta: float) -> void:
 		move_and_collide(velocity * delta)
 		position += direction * delta * speed
 	else: # false if the player is not moving at all
-		animatedSprite2D.play("idle")
+		animatedSprite2D.play("Idle")
 		
+func take_damage_player(damage: float):
+	health = health - damage
 	
