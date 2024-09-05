@@ -1,7 +1,10 @@
 extends CharacterBody2D
 
 @export var speed := 250 # default speed of player set to 500 as per testing on local machine
-@export var health := 100
+@export var maxHealth = 5
+@onready var health = maxHealth
+
+signal healthChanged
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -24,6 +27,9 @@ func _process(delta: float) -> void:
 	else: # false if the player is not moving at all
 		animatedSprite2D.play("Idle")
 		
-func take_damage_player(damage: float):
-	health = health - damage
+func take_damage_player():
+	health -= 1
+	healthChanged.emit(health)
+	if health <= 0:
+		get_tree().change_scene_to_file("res://Scenes/game_over_screen.tscn")
 	

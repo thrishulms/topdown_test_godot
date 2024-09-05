@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://7w0ftdk1n8jc"]
+
+[ext_resource type="Texture2D" uid="uid://copmvlunnhd05" path="res://Assets/UI/Player Health UI.png" id="1_reijv"]
+
+[node name="HeartGui" type="Panel"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(32, 32)
+offset_right = 26.0
+offset_bottom = 28.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_reijv")
+centered = false

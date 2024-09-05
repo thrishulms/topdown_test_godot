@@ -55,7 +55,7 @@ func _animation_finished() -> void:
 	var distance_to_player = global_position.distance_to(player.global_position)
 	if animName == "Attack" && distance_to_player <= attack_range:
 		if player.has_method("take_damage_player"):
-			player.call("take_damage_player", 20)
+			player.call("take_damage_player")
 	
 	canMove = true
 	isAttacking = false

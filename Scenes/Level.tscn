@@ -1,16 +1,17 @@
-[gd_scene load_steps=7 format=3 uid="uid://6ri428xr7hg5"]
+[gd_scene load_steps=8 format=3 uid="uid://6ri428xr7hg5"]
 
 [ext_resource type="PackedScene" uid="uid://cri2lc7ogxnjd" path="res://Scenes/Player.tscn" id="1_63muq"]
+[ext_resource type="Script" path="res://Scenes/level.gd" id="1_thilw"]
 [ext_resource type="PackedScene" uid="uid://brjjq5rlpmp70" path="res://Scenes/Gun.tscn" id="2_1bvb1"]
 [ext_resource type="PackedScene" uid="uid://hktns7lq3eb2" path="res://Scenes/Enemy.tscn" id="3_6ao0d"]
 [ext_resource type="Script" path="res://Scenes/enemy_spawner.gd" id="4_wvbfn"]
+[ext_resource type="PackedScene" uid="uid://dkf0687o6qyu3" path="res://Scenes/HeartsContainer.tscn" id="5_0lbfq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_11sld"]
 size = Vector2(67, 717)
 
-[sub_resource type="TileSet" id="TileSet_xd0s6"]
-
 [node name="Level" type="Node2D"]
+script = ExtResource("1_thilw")
 
 [node name="Player" parent="." instance=ExtResource("1_63muq")]
 position = Vector2(372, 294)
@@ -32,9 +33,10 @@ collision_mask = 3
 position = Vector2(-49, 365)
 shape = SubResource("RectangleShape2D_11sld")
 
-[node name="Node" type="Node" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="TileMap" type="TileMap" parent="Node"]
-tile_set = SubResource("TileSet_xd0s6")
-rendering_quadrant_size = 96
-format = 2
+[node name="HeartsContainer" parent="CanvasLayer" instance=ExtResource("5_0lbfq")]
+offset_left = 2.0
+offset_top = 4.0
+offset_right = 178.0
+offset_bottom = 44.0
